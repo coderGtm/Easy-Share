@@ -1,3 +1,6 @@
-#peerCode {
-    letter-spacing: 3cm;
+#connectionWaiting {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
