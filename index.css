@@ -1,0 +1,4 @@
+div.primary-actions-btns:hover {
+    cursor: pointer;
+    background-color: rgba(110, 104, 104, 0.05);
+}
