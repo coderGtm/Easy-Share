@@ -14,8 +14,8 @@
     <div class="bg-primary pt-2 ps-4 pb-2 text-white">
         <span class="display-5">Easy-Share</span>
     </div>
-    <h1 class="display-2 text-center w-100 my-5">Send Files</h1>
-    <div class="container shadow my-5 pb-5">
+    <h1 class="display-2 text-center w-100 mt-3">Send Files</h1>
+    <div id="connectionInterface" class="container shadow my-5 pb-5">
         <h2 class="pt-3">Connect with the receiving device</h2>
         <p class="display-6 mt-5 text-center">Enter the following code in receiving Device.</p>
         <h1 class="mx-auto w-100 text-center my-5"><span id="peerCode" class="badge bg-primary"></span></h1>
@@ -23,11 +23,8 @@
             <div class="spinner-border text-primary"></div>
             <span class="h5 ms-3">Waiting for the receiving device to connect...</span>
         </div>
-        <div id="connectionConnected" class="mb-1 text-cente text-white bg-success text-center p-3 rounded">
+        <div id="connectionConnected" class="text-cente text-white bg-success text-center p-3 rounded">
             <span class="h5 ms-3">Connected</span>
-        </div>
-        <div id="connectionDisconnected" class="mb-1 text-cente text-white bg-danger text-center p-3 rounded">
-            <span class="h5 ms-3">Connection Lost</span>
         </div>
     </div>
 </body>
