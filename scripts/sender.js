@@ -19,13 +19,14 @@ window.onload = function(_loadEvt) {
                 alert("open");
             })
         });
-        peer.on("error", function(err) {
-            alert("An error occured. Please try again.");
-        });
+    });
+    peer.on("error", function(err) {
+        console.log(err);
+        alert("An error occured. Please try again.");
     });
 }
 function getRandomNum() {
     min = 10000;
     max = 99999;
-    return Math.random() * (max - min) + min;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
