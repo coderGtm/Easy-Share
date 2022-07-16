@@ -15,6 +15,7 @@
         <span class="display-5">Easy-Share</span>
     </div>
     <h1 class="display-2 text-center w-100 mt-3">Send Files</h1>
+
     <div id="connectionInterface" class="container shadow my-5 pb-5">
         <h2 class="pt-3">Connect with the receiving device</h2>
         <p class="display-6 mt-5 text-center">Enter the following code in receiving Device.</p>
@@ -26,6 +27,13 @@
         <div id="connectionConnected" class="text-cente text-white bg-success text-center p-3 rounded">
             <span class="h5 ms-3">Connected</span>
         </div>
+    </div>
+
+    <div id="fileInterface" class="container shadow py-5 text-center">
+        <label for="file_upload" id="uploadLabel" class="btn text-white bg-primary"><h1>Select Files</h1></label>
+        <input id="file_upload" type="file" multiple>
+        <ol id="fileList" class="list-group list-group-numbered my-5"></ol>
+        <span id="sendBtn" onclick="prepareForLaunch()" class="rounded h1 bg-success text-white px-3 py-1">Send</span>
     </div>
 </body>
 </html>
