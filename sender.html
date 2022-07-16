@@ -8,6 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/peerjs@1.4.5/dist/peerjs.min.js"></script>
     <link href="styles/sender.css" rel="stylesheet">
+    <script src="scripts/sender.js"></script>
 </head>
 <body>
     <div class="bg-primary pt-2 ps-4 pb-2 text-white">
@@ -17,7 +18,7 @@
     <div class="container shadow my-5 pb-5">
         <h2 class="pt-3">Connect with the receiving device</h2>
         <p class="display-6 mt-5 text-center">Enter the following code in receiving Device.</p>
-        <h1 class="mx-auto w-100 text-center my-5"><span id="peerCode" class="badge bg-primary">17825</span></h1>
+        <h1 class="mx-auto w-100 text-center my-5"><span id="peerCode" class="badge bg-primary"></span></h1>
         <div id="connectionWaiting" class="mb-1">
             <div class="spinner-border text-primary"></div>
             <span class="h5 ms-3">Waiting for the receiving device to connect...</span>
