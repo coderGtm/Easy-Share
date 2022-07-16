@@ -49,7 +49,22 @@ function addToList(file) {
     document.getElementById("fileList").appendChild(li);
 }
 function prepareForLaunch() {
-    //zip files here and then send from another function
+    var zip = new JSZip();
+    files.forEach(f => {
+        zip.file(f.name,f);
+    });
+    zip.generateAsync({type:"blob"})
+    .then(function (blob) {
+    send(blob);
+});
+}
+function send(blob) {
+    console.log(blob)
+    connection.send({
+        file: blob,
+        filename: "files.zip",
+        filetype: blob.type
+    });
 }
 function getRandomNum() {
     min = 10000;
