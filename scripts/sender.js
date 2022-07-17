@@ -2,6 +2,7 @@ window.onload = function(_loadEvt) {
     peerCode = getRandomNum();
     const peer = new Peer("coderGtm-Easy-Share-"+peerCode);
     connection = null;
+    newfiles = null;
     peer.on('open', function(id) {
         document.getElementById("peerCode").innerText = peerCode;
         document.getElementById("connectionWaiting").style.display = "flex";
@@ -20,12 +21,12 @@ window.onload = function(_loadEvt) {
                 document.getElementById("fileInterface").style.display = "block";
             },2000);
             connection.on("open", function() {
-                files = [];
+                
                 document.getElementById("file_upload").onchange = function(event) {
-                    const newfiles = event.target.files;
-                    console.log(files);
+                    newfiles = event.target.files;
+                    console.log(newfiles);
                     for (i=0;i<newfiles.length;i++) {
-                        addToList(newfiles[i])
+                        addToList(newfiles[i]);
                     }
                     document.getElementById("sendBtn").style.display = "block";
                 }
@@ -38,7 +39,6 @@ window.onload = function(_loadEvt) {
     });
 }
 function addToList(file) {
-    files.push(file);
     li = document.createElement("li");
     li.classList.add("list-group-item","d-flex","justify-content-between","align-items-center");
     li.innerText = file.name;
@@ -49,13 +49,13 @@ function addToList(file) {
     document.getElementById("fileList").appendChild(li);
 }
 function prepareForLaunch() {
-    files.forEach(f => {
+    for (i=0;i<newfiles.length;i++) {
         const blob = new Blob(f, { type: f.type });
         send(f.name,blob);
-    });
+    }
 }
 function send(fname,blob) {
-    console.log(blob)
+    console.log(blob);
     connection.send({
         file: blob,
         filename: fname,
