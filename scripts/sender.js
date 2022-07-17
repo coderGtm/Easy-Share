@@ -49,20 +49,16 @@ function addToList(file) {
     document.getElementById("fileList").appendChild(li);
 }
 function prepareForLaunch() {
-    var zip = new JSZip();
     files.forEach(f => {
-        zip.file(f.name,f);
+        const blob = new Blob(f, { type: f.type });
+        send(f.name,blob);
     });
-    zip.generateAsync({type:"blob"})
-    .then(function (blob) {
-    send(blob);
-});
 }
-function send(blob) {
+function send(fname,blob) {
     console.log(blob)
     connection.send({
         file: blob,
-        filename: "files.zip",
+        filename: fname,
         filetype: blob.type
     });
 }
