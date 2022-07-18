@@ -6,6 +6,7 @@ window.onload = function(_loadEvt) {
             const connection = peer.connect("coderGtm-Easy-Share-"+peerCode,{reliable:true});
             connection.on("open", function() {
                 totalSize = 0;
+                receivedSize = 0;
                 document.getElementById("connectionInterface").style.display = "none";
                 document.getElementById("fileInterface").style.display = "block";
                 connection.on("data",function(data) {
@@ -14,7 +15,14 @@ window.onload = function(_loadEvt) {
                         addToList(data.f_info.name,data.f_info.size);
                     }
                     else {
+                        document.getElementById("progressBar").style.display = "block";
                         var blob = new Blob([data.file], {type: data.filetype});
+
+                        receivedSize += newfiles[i].size;
+                        percentage = Math.floor((receivedSize/totalSize)*100)
+                        document.getElementById("progressBar").style.width = percentage+"%";
+                        document.getElementById("progressBar").innerHTML = percentage+"%";
+                        
                         downloadBlob(blob,data.filename);
                     }
                 });
