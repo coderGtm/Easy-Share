@@ -5,18 +5,36 @@ window.onload = function(_loadEvt) {
             peerCode = document.getElementById("peerCode").value;
             const connection = peer.connect("coderGtm-Easy-Share-"+peerCode,{reliable:true});
             connection.on("open", function() {
+                document.getElementById("connectionInterface").style.display = "none";
+                document.getElementById("fileInterface").style.display = "block";
                 connection.on("data",function(data) {
                     console.log(data);
-                    var blob = new Blob([data.file], {type: data.filetype});
-                    downloadBlob(blob,data.filename);
+                    if (data["f_info"]) {
+                        addToList(data.f_info.name,data.f_info.size);
+                    }
+                    else {
+                        var blob = new Blob([data.file], {type: data.filetype});
+                        downloadBlob(blob,data.filename);
+                    }
                 });
             })
         }
     });
 }
 
+function addToList(fname,fsize) {
+    li = document.createElement("li");
+    li.classList.add("list-group-item","d-flex","justify-content-between","align-items-center");
+    li.innerText = fname;
+    span = document.createElement("span");
+    span.classList.add("badge","bg-primary","rounded-pill");
+    span.innerText = Math.round(fsize/1024/1024)+" mb";     //todo: properly format here
+    li.appendChild(span);
+    document.getElementById("fileList").appendChild(li);
+}
 
-function downloadBlob(blob, name = 'file.txt') {
+
+function downloadBlob(blob, name = 'unknown') {
     // Convert your blob into a Blob URL (a special url that points to an object in the browser's memory)
     const blobUrl = URL.createObjectURL(blob);
   

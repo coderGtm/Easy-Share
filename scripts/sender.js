@@ -44,11 +44,13 @@ function addToList(file) {
     li.innerText = file.name;
     span = document.createElement("span");
     span.classList.add("badge","bg-primary","rounded-pill");
-    span.innerText = Math.round(file.size/1024/1024)+" mb";
+    span.innerText = Math.round(file.size/1024/1024)+" mb";     //todo: properly format here
     li.appendChild(span);
     document.getElementById("fileList").appendChild(li);
+    connection.send({f_info:{name:file.name,size:file.size}});
 }
 function prepareForLaunch() {
+    document.getElementById("sendBtn").style.display = "none";
     for (i=0;i<newfiles.length;i++) {
         const blob = new Blob([newfiles[i]], { type: newfiles[i].type });
         send(newfiles[i].name,blob);
