@@ -50,8 +50,8 @@ function addToList(file) {
 }
 function prepareForLaunch() {
     for (i=0;i<newfiles.length;i++) {
-        const blob = new Blob(f, { type: f.type });
-        send(f.name,blob);
+        const blob = new Blob([newfiles[i]], { type: newfiles[i].type });
+        send(newfiles[i].name,blob);
     }
 }
 function send(fname,blob) {
