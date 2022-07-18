@@ -18,11 +18,11 @@ window.onload = function(_loadEvt) {
                         document.getElementById("progressBar").style.display = "block";
                         var blob = new Blob([data.file], {type: data.filetype});
 
-                        receivedSize += newfiles[i].size;
+                        receivedSize += blob.size;
                         percentage = Math.floor((receivedSize/totalSize)*100)
                         document.getElementById("progressBar").style.width = percentage+"%";
                         document.getElementById("progressBar").innerHTML = percentage+"%";
-                        
+
                         downloadBlob(blob,data.filename);
                     }
                 });
