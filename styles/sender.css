@@ -15,6 +15,7 @@
 }
 #sendBtn {
     display: none;
+    cursor: pointer;
 }
 
 .fade-out-top{-webkit-animation:fade-out-top .7s cubic-bezier(.25,.46,.45,.94) both;animation:fade-out-top .7s cubic-bezier(.25,.46,.45,.94) both}
