@@ -17,6 +17,10 @@
     display: none;
     cursor: pointer;
 }
+#progressBar {
+    display: none;
+    transition: 1s;
+}
 
 .fade-out-top{-webkit-animation:fade-out-top .7s cubic-bezier(.25,.46,.45,.94) both;animation:fade-out-top .7s cubic-bezier(.25,.46,.45,.94) both}
 

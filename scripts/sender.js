@@ -14,6 +14,8 @@ window.onload = function(_loadEvt) {
                 return;
             }
             connection = conn;
+            totalSize = 0;
+            sentSize = 0;
             document.getElementById("connectionWaiting").style.display = "none";
             document.getElementById("connectionConnected").style.display = "block";
             setTimeout(function() {
@@ -39,6 +41,7 @@ window.onload = function(_loadEvt) {
     });
 }
 function addToList(file) {
+    totalSize += file.size;
     li = document.createElement("li");
     li.classList.add("list-group-item","d-flex","justify-content-between","align-items-center");
     li.innerText = file.name;
@@ -51,9 +54,16 @@ function addToList(file) {
 }
 function prepareForLaunch() {
     document.getElementById("sendBtn").style.display = "none";
+    document.getElementById("uploadLabel").style.display = "none";
+    document.getElementById("file_upload").style.display = "none";
+    document.getElementById("progressBar").style.display = "block";
     for (i=0;i<newfiles.length;i++) {
         const blob = new Blob([newfiles[i]], { type: newfiles[i].type });
         send(newfiles[i].name,blob);
+        sentSize += newfiles[i].size;
+        percentage = Math.floor((sentSize/totalSize)*100)
+        document.getElementById("progressBar").style.width = percentage+"%";
+        document.getElementById("progressBar").innerHTML = percentage+"%";
     }
 }
 function send(fname,blob) {

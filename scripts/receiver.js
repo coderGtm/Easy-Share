@@ -5,6 +5,7 @@ window.onload = function(_loadEvt) {
             peerCode = document.getElementById("peerCode").value;
             const connection = peer.connect("coderGtm-Easy-Share-"+peerCode,{reliable:true});
             connection.on("open", function() {
+                totalSize = 0;
                 document.getElementById("connectionInterface").style.display = "none";
                 document.getElementById("fileInterface").style.display = "block";
                 connection.on("data",function(data) {
@@ -23,6 +24,7 @@ window.onload = function(_loadEvt) {
 }
 
 function addToList(fname,fsize) {
+    totalSize += fsize;
     li = document.createElement("li");
     li.classList.add("list-group-item","d-flex","justify-content-between","align-items-center");
     li.innerText = fname;
