@@ -34,6 +34,10 @@
         <span id="uploadBtn" class="btn btn-lg text-white bg-primary btn-file mt-5">
             Select Files <input id="file_upload" name="upload_file" type="file" accept="*/*" multiple>
           </span>
+          <div id="zipTip" class="alert alert-warning alert-dismissible mt-3">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong>TIP:</strong> Consider zipping large files before uploading to send them faster and save your bandwith.
+          </div>
         
         <ol id="fileList" class="list-group list-group-numbered my-5"></ol>
         <span id="sendBtn" onclick="prepareForLaunch()" class="rounded h1 bg-success text-white px-3 py-1">Send</span>

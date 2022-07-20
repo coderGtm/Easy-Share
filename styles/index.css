@@ -16,3 +16,10 @@
     -o-transition: .3s;
     transition: .3s;
 }
+#githubImg {
+    position: absolute;
+    top: 3vh;
+    right: 3vw;
+    height: 5vh;
+    cursor: pointer;
+}

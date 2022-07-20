@@ -64,6 +64,7 @@ function addToList(file) {
 function prepareForLaunch() {
     document.getElementById("sendBtn").style.display = "none";
     document.getElementById("uploadBtn").style.display = "none";
+    document.getElementById("zipTip").style.display = "none";
     document.getElementById("file_upload").style.display = "none";
     document.getElementById("progressBar").style.display = "block";
     for (i=0;i<newfiles.length;i++) {
