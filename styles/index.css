@@ -1,4 +1,18 @@
-div.primary-actions-btns:hover {
+#primary-actions-div :hover {
     cursor: pointer;
-    background-color: rgba(110, 104, 104, 0.05);
+    -webkit-transform: scale(1.02);
+        -ms-transform: scale(1.02);
+            transform: scale(1.02);
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+}
+#primary-actions-div :active {
+    cursor: pointer;
+    -webkit-transform: scale(1.02);
+        -ms-transform: scale(1.02);
+            transform: scale(1.02);
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
 }

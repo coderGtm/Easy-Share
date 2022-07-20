@@ -1,3 +1,15 @@
 #fileInterface {
     display: none;
 }
+#receiving {
+    display: none;
+}
+#incomingFiles {
+    display: none;
+}
+#progressBar {
+    display: none;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+}

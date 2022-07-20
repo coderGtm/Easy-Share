@@ -15,7 +15,7 @@ window.onload = function(_loadEvt) {
             }
             connection = conn;
             totalSize = 0;
-            sentSize = 0;
+            
             document.getElementById("connectionWaiting").style.display = "none";
             document.getElementById("connectionConnected").style.display = "block";
             setTimeout(function() {
@@ -31,6 +31,15 @@ window.onload = function(_loadEvt) {
                         addToList(newfiles[i]);
                     }
                     document.getElementById("sendBtn").style.display = "block";
+                }
+            });
+            connection.on("data", function(data) {
+                percentage = data.split(":")[1];
+                document.getElementById("progressBar").style.width = percentage+"%";
+                document.getElementById("progressBar").innerHTML = percentage+"%";
+                if (percentage == "100") {
+                    var myModal = new bootstrap.Modal(document.getElementById('completionModal'), {});
+                    myModal.show();
                 }
             })
         });
@@ -54,17 +63,14 @@ function addToList(file) {
 }
 function prepareForLaunch() {
     document.getElementById("sendBtn").style.display = "none";
-    //document.getElementById("uploadLabel").style.display = "none";
+    document.getElementById("uploadBtn").style.display = "none";
     document.getElementById("file_upload").style.display = "none";
     document.getElementById("progressBar").style.display = "block";
     for (i=0;i<newfiles.length;i++) {
         const blob = new Blob([newfiles[i]], { type: newfiles[i].type });
         send(newfiles[i].name,blob);
-        sentSize += newfiles[i].size;
-        percentage = Math.floor((sentSize/totalSize)*100)
-        document.getElementById("progressBar").style.width = percentage+"%";
-        document.getElementById("progressBar").innerHTML = percentage+"%";
     }
+
 }
 function send(fname,blob) {
     console.log(blob);

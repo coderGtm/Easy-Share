@@ -12,18 +12,29 @@ window.onload = function(_loadEvt) {
                 connection.on("data",function(data) {
                     console.log(data);
                     if (data["f_info"]) {
+                        document.getElementById("incomingFiles").style.display = "block";
                         addToList(data.f_info.name,data.f_info.size);
                     }
                     else {
+                        document.getElementById("connected").style.display = "none";
+                        document.getElementById("receiving").style.display = "block";
                         document.getElementById("progressBar").style.display = "block";
-                        var blob = new Blob([data.file], {type: data.filetype});
 
+                        var blob = new Blob([data.file], {type: data.filetype});
                         receivedSize += blob.size;
-                        percentage = Math.floor((receivedSize/totalSize)*100)
+                        percentage = Math.floor((receivedSize/totalSize)*100);
                         document.getElementById("progressBar").style.width = percentage+"%";
                         document.getElementById("progressBar").innerHTML = percentage+"%";
+                        
+                        connection.send("rp:"+ percentage);
 
                         downloadBlob(blob,data.filename);
+
+                        if (percentage == 100) {
+                            document.getElementById("receiving").innerHTML = "<strong>All files received.</strong>";
+                            var myModal = new bootstrap.Modal(document.getElementById('completionModal'), {});
+                            myModal.show();
+                        }
                     }
                 });
             })

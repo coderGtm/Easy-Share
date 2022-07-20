@@ -25,11 +25,40 @@
         <div id="connected" class="alert alert-success mb-3">
             <strong>Connected!</strong> Waiting for the sender to send files.
         </div>
+        <div id="receiving" class="alert alert-primary mb-3">
+            Receiving Files...<strong>Do not close this window.</strong>
+        </div>
         <div id="incomingFiles">
             <h2 class="text-start">Incoming Files:</h2>
             <ol id="fileList" class="list-group list-group-numbered my-5"></ol>
             <div id="progressBar" class="progress-bar rounded progress-bar-striped progress-bar-animated bg-success" style="width:0;"></div>
         </div>
     </div>
+
+    <!-- The Modal -->
+<div class="modal fade" id="completionModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+          Files transferred successfully
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="window.location.href='index.html';">Home</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
 </body>
 </html>
