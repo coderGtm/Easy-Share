@@ -40,6 +40,7 @@ window.onload = function(_loadEvt) {
                 if (percentage == "100") {
                     var myModal = new bootstrap.Modal(document.getElementById('completionModal'), {});
                     myModal.show();
+                    peer.destroy();
                 }
             })
         });

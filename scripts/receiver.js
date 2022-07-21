@@ -34,6 +34,7 @@ window.onload = function(_loadEvt) {
                             document.getElementById("receiving").innerHTML = "<strong>All files received.</strong>";
                             var myModal = new bootstrap.Modal(document.getElementById('completionModal'), {});
                             myModal.show();
+                            peer.destroy();
                         }
                     }
                 });
