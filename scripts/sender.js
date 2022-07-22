@@ -63,7 +63,7 @@ function addToList(file) {
     li.innerText = file.name;
     span = document.createElement("span");
     span.classList.add("badge","bg-primary","rounded-pill");
-    span.innerText = Math.round(file.size/1024/1024)+" mb";     //todo: properly format here
+    span.innerText = getFormattedSize(file.size);
     li.appendChild(span);
     document.getElementById("fileList").appendChild(li);
     connection.send({f_info:{name:file.name,size:file.size}});
@@ -87,6 +87,22 @@ function send(fname,blob) {
         filename: fname,
         filetype: blob.type
     });
+}
+function getFormattedSize(bytes) {
+    kb = Math.round(bytes/1024);
+    if (kb<1024) {
+        return kb+" KB";
+    }
+    else {
+        mb = Math.round(kb/1024);
+        if (mb<1024) {
+            return mb+" MB";
+        }
+        else {
+            gb = Math.round(mb/1024);
+            return gb+" GB";
+        }
+    }
 }
 function getRandomNum() {
     min = 10000;

@@ -60,9 +60,25 @@ function addToList(fname,fsize) {
     li.innerText = fname;
     span = document.createElement("span");
     span.classList.add("badge","bg-primary","rounded-pill");
-    span.innerText = Math.round(fsize/1024/1024)+" mb";     //todo: properly format here
+    span.innerText = getFormattedSize(fsize);
     li.appendChild(span);
     document.getElementById("fileList").appendChild(li);
+}
+function getFormattedSize(bytes) {
+    kb = Math.round(bytes/1024);
+    if (kb<1024) {
+        return kb+" KB";
+    }
+    else {
+        mb = Math.round(kb/1024);
+        if (mb<1024) {
+            return mb+" MB";
+        }
+        else {
+            gb = Math.round(mb/1024);
+            return gb+" GB";
+        }
+    }
 }
 
 
