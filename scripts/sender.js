@@ -42,12 +42,18 @@ window.onload = function(_loadEvt) {
                     myModal.show();
                     peer.destroy();
                 }
-            })
+            });
+            connection.on("error",function(err) {
+                console.error(err);
+                alert("An error occured. Please try again.");
+                location.reload();
+            });
         });
     });
     peer.on("error", function(err) {
         console.error(err);
         alert("An error occured. Please try again.");
+        location.reload();
     });
 }
 function addToList(file) {

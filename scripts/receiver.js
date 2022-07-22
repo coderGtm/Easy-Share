@@ -38,8 +38,18 @@ window.onload = function(_loadEvt) {
                         }
                     }
                 });
-            })
+            });
+            connection.on("error",function(err) {
+                console.error(err);
+                alert("An error occured. Please try again.");
+                location.reload();
+            });
         }
+    });
+    peer.on("error", function(err) {
+        console.error(err);
+        alert("An error occured. Please try again.");
+        location.reload();
     });
 }
 
