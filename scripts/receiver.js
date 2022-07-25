@@ -11,7 +11,11 @@ window.onload = function(_loadEvt) {
                 document.getElementById("fileInterface").style.display = "block";
                 connection.on("data",function(data) {
                     console.log(data);
-                    if (data["f_info"]) {
+                    if (data == "reset") {
+                        document.getElementById("fileList").innerHTML = "";
+                        totalSize = 0;
+                    }
+                    else if (data["f_info"]) {
                         document.getElementById("incomingFiles").style.display = "block";
                         addToList(data.f_info.name,data.f_info.size);
                     }
@@ -34,7 +38,7 @@ window.onload = function(_loadEvt) {
                             document.getElementById("receiving").innerHTML = "<strong>All files received.</strong>";
                             var myModal = new bootstrap.Modal(document.getElementById('completionModal'), {});
                             myModal.show();
-                            peer.destroy();
+                            setTimeout(function(){peer.destroy();},5000);
                         }
                     }
                 });

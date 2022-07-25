@@ -29,6 +29,7 @@ window.onload = function(_loadEvt) {
                     //reset
                     document.getElementById("fileList").innerHTML = "";
                     totalSize = 0;
+                    connection.send("reset");
                     for (i=0;i<newfiles.length;i++) {
                         addToList(newfiles[i]);
                     }
@@ -73,7 +74,7 @@ function addToList(file) {
 function prepareForLaunch() {
     document.getElementById("sendBtn").style.display = "none";
     document.getElementById("uploadBtn").style.display = "none";
-    document.getElementById("zipTip").style.display = "none";
+    try {document.getElementById("zipTip").style.display = "none";} catch (e) {}
     document.getElementById("file_upload").style.display = "none";
     document.getElementById("progressBar").style.display = "block";
     for (i=0;i<newfiles.length;i++) {
