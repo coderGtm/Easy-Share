@@ -26,7 +26,8 @@ window.onload = function(_loadEvt) {
                 
                 document.getElementById("file_upload").onchange = function(event) {
                     newfiles = event.target.files;
-                    console.log(newfiles);
+                    document.getElementById("fileList").innerHTML = "";
+                    totalSize = 0;
                     for (i=0;i<newfiles.length;i++) {
                         addToList(newfiles[i]);
                     }
