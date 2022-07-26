@@ -40,6 +40,7 @@ window.onload = function(_loadEvt) {
                 percentage = data.split(":")[1];
                 document.getElementById("progressBar").style.width = percentage+"%";
                 document.getElementById("progressBar").innerHTML = percentage+"%";
+                document.getElementById("sending").style.display = "none";
                 if (percentage == "100") {
                     var myModal = new bootstrap.Modal(document.getElementById('completionModal'), {});
                     myModal.show();
@@ -76,6 +77,7 @@ function prepareForLaunch() {
     document.getElementById("uploadBtn").style.display = "none";
     try {document.getElementById("zipTip").style.display = "none";} catch (e) {}
     document.getElementById("file_upload").style.display = "none";
+    document.getElementById("sending").style.display = "block";
     document.getElementById("progressBar").style.display = "block";
     for (i=0;i<newfiles.length;i++) {
         const blob = new Blob([newfiles[i]], { type: newfiles[i].type });

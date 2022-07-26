@@ -40,6 +40,9 @@
     display: none;
     cursor: pointer;
 }
+#sending {
+    display: none;
+}
 #progressBar {
     display: none;
     -webkit-transition: 1s;
